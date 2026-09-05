@@ -1,0 +1,69 @@
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#04070a;overflow:hidden;font-family:'Chakra Petch',sans-serif}
+body{display:flex;align-items:center;justify-content:center}
+#stage{position:relative;width:min(100vw,177.78vh);height:min(56.25vw,100vh);background:#000;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:none}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hidden{display:none!important}
+.ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;background:rgba(2,8,4,.84);z-index:30;text-align:center}
+.panel{background:#071108;border:.2em solid #2f5a26;box-shadow:0 .5em 0 #000, inset 0 0 0 .12em #04170a;padding:1.1em 1.5em;max-width:38em;width:90%;cursor:pointer}
+.btn{font-family:Bangers,cursive;font-size:1em;letter-spacing:.09em;color:#d9ffc0;background:#0c1a0d;border:.14em solid #4a8f37;padding:.45em 1.4em;box-shadow:0 .22em 0 #000;cursor:pointer;margin:.3em}
+.btn:hover{transform:translateY(-.1em);filter:brightness(1.15)}
+.btn:active{transform:translateY(.12em);box-shadow:0 .05em 0 #000}
+.btn.primary{background:#1d3a14;border-color:#7ee23a;color:#eaffdc;font-size:1.3em}
+/* ---------- title ---------- */
+#ovTitle .dialWrap{margin-bottom:.2em;animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1) rotate(-2deg)}50%{transform:scale(1.05) rotate(2deg)}}
+.bigTitle{font-family:Bangers,cursive;font-size:4.4em;line-height:.95;color:#eaffdc;-webkit-text-stroke:.035em #08170a;text-shadow:.05em .06em 0 #0c2c10}
+.bigTitle span{color:#7ee23a}
+.subtitle{font-weight:700;font-size:.85em;letter-spacing:.55em;color:#7ee23a;margin:.4em 0 .2em;text-indent:.55em}
+.fanline{font-size:.55em;color:#7f9c82;margin:.5em 0 1em;letter-spacing:.08em}
+/* ---------- HUD ---------- */
+#hud{position:absolute;inset:0;pointer-events:none;z-index:20}
+.hudTL{position:absolute;top:.6em;left:.7em;display:flex;flex-direction:column;gap:.3em}
+.barRow{display:flex;align-items:center;gap:.4em}
+.barLab{font-weight:700;font-size:.58em;color:#bfe8c4;letter-spacing:.14em;width:4.6em;text-align:right}
+.bar{width:11em;height:.72em;background:#0a120c;border:.14em solid #000;box-shadow:0 .14em 0 rgba(0,0,0,.65);position:relative}
+.bar>div{height:100%;width:100%}
+#hpFill{background:#ff5340;transition:width .12s}
+#enFill{background:#7ee23a;transition:width .1s}
+.bar.hpLow{animation:blink .4s steps(2) infinite}
+@keyframes blink{50%{border-color:#ff5340}}
+#enLock{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.5em;font-weight:700;color:#ffb1a5;letter-spacing:.2em;background:rgba(60,10,8,.45)}
+.hudTC{position:absolute;top:.55em;left:50%;transform:translateX(-50%);text-align:center}
+#chLabel{font-family:Bangers,cursive;font-size:.85em;letter-spacing:.12em;color:#d7ffd0;text-shadow:.08em .1em 0 #000}
+#waveLabel{font-size:.55em;font-weight:700;letter-spacing:.3em;color:#8fbf8a;margin-top:.15em}
+#bossWrap{margin-top:.25em}
+#bossWrap b{font-family:Bangers,cursive;font-size:.7em;color:#ff7364;letter-spacing:.2em}
+.bar.boss{width:20em;height:.6em;border-color:#000;margin:.2em auto 0}
+#bossFill{background:#ff5340}
+.hudTR{position:absolute;top:.6em;right:.7em;text-align:right}
+.miniBtns{display:flex;gap:.4em;justify-content:flex-end;margin-bottom:.3em}
+.miniBtn{pointer-events:auto;font-family:'Chakra Petch';font-weight:700;font-size:.5em;letter-spacing:.1em;color:#a9d8a4;background:#0a140a;border:.15em solid #2f5a26;padding:.5em .8em;cursor:pointer;box-shadow:0 .18em 0 #000}
+.miniBtn:active{transform:translateY(.12em)}
+#scoreVal{font-family:Bangers,cursive;font-size:1.15em;color:#fff;text-shadow:.08em .1em 0 #000}
+#comboVal{font-family:Bangers,cursive;font-size:.7em;color:#aef07a;letter-spacing:.1em}
+/* ---------- omnitrix dial ---------- */
+#dial{position:absolute;left:50%;bottom:.6em;transform:translateX(-50%);display:flex;gap:.55em;z-index:22}
+.db{width:3.1em;height:3.1em;border-radius:50%;background:#0a0f0a;border:.16em solid var(--c);color:var(--c);display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;box-shadow:0 .2em 0 #000;transition:transform .08s,background .1s}
+.db svg{width:56%;height:56%;pointer-events:none}
+.db i{position:absolute;right:-.3em;top:-.3em;background:#000;border:.12em solid var(--c);color:var(--c);font:700 .5em 'Chakra Petch';font-style:normal;width:1.7em;height:1.7em;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.db.active{background:var(--c);color:#04140a;transform:translateY(-.3em) scale(1.1)}
+#dial.locked .db{filter:grayscale(.75) brightness(.55)}
+#hint{position:absolute;left:50%;bottom:4.5em;transform:translateX(-50%);background:rgba(6,12,6,.94);border:.14em solid #2f5a26;color:#c9f7b8;padding:.45em 1em;font-weight:600;font-size:.62em;letter-spacing:.06em;z-index:21;white-space:nowrap}
+/* ---------- touch ---------- */
+#touch{position:absolute;inset:0;pointer-events:none;z-index:24}
+#touch button{pointer-events:auto;position:absolute;bottom:1em;width:3.8em;height:3.8em;border-radius:50%;background:rgba(10,22,10,.55);border:.14em solid #3f7a30;color:#cfeec2;font-family:Bangers,cursive;font-size:1em;letter-spacing:.05em}
+#tLeft{left:1em}#tRight{left:5.4em}#tJump{right:5.4em}#tAtk{right:1em;background:rgba(32,64,20,.6)}
+/* ---------- story ---------- */
+#storyName{font-family:Bangers,cursive;font-size:1.05em;letter-spacing:.14em;margin-bottom:.5em}
+#storyText{font-size:.85em;line-height:1.55;color:#d7edcf;min-height:6.2em;text-align:left;white-space:pre-wrap}
+#storyNext{margin-top:.7em;font-size:.55em;font-weight:700;letter-spacing:.25em;color:#7ee23a;animation:blink 1.1s steps(2) infinite}
+/* ---------- how ---------- */
+.howGrid{display:grid;grid-template-columns:1fr 1fr;gap:.5em .9em;text-align:left;margin:.8em 0;font-size:.62em}
+.howGrid b{display:block;font-family:Bangers,cursive;letter-spacing:.1em;font-size:1.25em}
+.keys{font-size:.62em;line-height:1.9;color:#b9dcb2;text-align:left;margin:.6em 0}
+.keys b{color:#eaffdc;background:#12240f;border:.1em solid #3f7a30;padding:.05em .5em;border-radius:.2em}
+h2.ovh{font-family:Bangers,cursive;font-size:1.6em;letter-spacing:.12em;color:#7ee23a;text-shadow:.08em .1em 0 #000;margin-bottom:.3em}
+.stats{font-family:Bangers,cursive;font-size:1em;color:#eaffdc;letter-spacing:.1em;margin:.4em 0 .8em}
+.stats span{color:#7ee23a}
+@media (max-width:700px){.howGrid{grid-template-columns:1fr}}
