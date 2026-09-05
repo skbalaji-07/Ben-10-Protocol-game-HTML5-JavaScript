@@ -25,7 +25,7 @@
 
 ## 🎮 Play Now
 
-### 👉 [🚀 PLAY BEN 10: OMNITRIX PROTOCOL](YOUR_GITHUB_PAGES_URL)
+### 👉 [🚀 PLAY BEN 10: OMNITRIX PROTOCOL](file:///C:/Users/moham/Downloads/Ben%2010%20game%20coding4/index.html)
 
 **No installation. No downloads. Open the link and play directly in your browser.**
 
