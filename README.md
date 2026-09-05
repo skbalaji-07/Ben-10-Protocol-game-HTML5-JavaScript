@@ -225,6 +225,8 @@ The game is deployed using **GitHub Pages**.
 
 > Add gameplay screenshots or a short gameplay GIF here to make the repository more visually appealing.
 
+<img width="1732" height="962" alt="Screenshot 2026-09-05 223623" src="https://github.com/user-attachments/assets/046fd32f-5d50-4aee-8c30-a2de80b92ae1" />
+
 Example:
 
 ```markdown
