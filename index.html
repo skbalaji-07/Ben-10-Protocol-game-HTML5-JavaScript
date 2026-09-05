@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Ben 10: Omnitrix Protocol — Fan Game</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="cv" width="960" height="540"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div class="hudTL">
+      <div class="barRow"><span class="barLab">BEN</span><div class="bar" id="hpBar"><div id="hpFill"></div></div></div>
+      <div class="barRow">
+        <span class="barLab">OMNITRIX</span>
+        <div class="bar"><div id="enFill"></div><div id="enLock" class="hidden">RECHARGING</div></div>
+      </div>
+    </div>
+    <div class="hudTC">
+      <div id="chLabel"></div>
+      <div id="waveLabel"></div>
+      <div id="bossWrap" class="hidden"><b>VILGAX — CONQUEROR OF TEN WORLDS</b><div class="bar boss"><div id="bossFill"></div></div></div>
+    </div>
+    <div class="hudTR">
+      <div class="miniBtns"><button class="miniBtn" id="sndBtn">SND ON</button><button class="miniBtn" id="pauseBtn">PAUSE</button></div>
+      <div id="scoreVal">0</div>
+      <div id="comboVal" class="hidden">COMBO ×2</div>
+    </div>
+  </div>
+
+  <!-- Omnitrix dial -->
+  <div id="dial" class="hidden">
+    <button class="db" data-form="heatblast" style="--c:#ff8a2a" aria-label="Heatblast"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c3 4-2.5 5.5.5 9 1.5 1.8 1.5 3.5.5 5 2-.6 2.8-2.2 2.6-3.9 1.6 1.8 2 4.6.6 6.6A7 7 0 0 1 5 13.5C5 9 10.5 7.5 12 2z"/></svg><i>1</i></button>
+    <button class="db" data-form="xlr8" style="--c:#3fc0ff" aria-label="XLR8"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2 5.5 13h4.6l-2.3 9 8.7-12h-4.8l1.8-8z"/></svg><i>2</i></button>
+    <button class="db" data-form="fourarms" style="--c:#ff5f4a" aria-label="Four Arms"><svg viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="2.5" fill="currentColor"/><path d="M8 9V6.5M12 9V6M16 9V6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg><i>3</i></button>
+    <button class="db" data-form="diamondhead" style="--c:#7ef2a2" aria-label="Diamondhead"><svg viewBox="0 0 24 24"><path d="M12 2 20 9.5 12 22 4 9.5z" fill="currentColor"/><path d="M4 9.5h16M12 2 8.5 9.5 12 22" stroke="#04140a" stroke-width="1.2" fill="none"/></svg><i>4</i></button>
+    <button class="db" data-form="ben" style="--c:#7ee23a" aria-label="Ben"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0a0a0a" stroke="#7ee23a" stroke-width="1.4"/><path d="M7 7h10l-3.4 5L17 17H7l3.4-5z" fill="#7ee23a"/></svg><i>Q</i></button>
+  </div>
+
+  <div id="hint" class="hidden"></div>
+
+  <!-- touch pads -->
+  <div id="touch" class="hidden">
+    <button id="tLeft" aria-label="left"><svg viewBox="0 0 24 24" width="45%" fill="currentColor"><path d="M15 4 7 12l8 8z"/></svg></button>
+    <button id="tRight" aria-label="right"><svg viewBox="0 0 24 24" width="45%" fill="currentColor"><path d="M9 4l8 8-8 8z"/></svg></button>
+    <button id="tJump">JUMP</button>
+    <button id="tAtk">HIT</button>
+  </div>
+
+  <!-- TITLE -->
+  <div class="ov" id="ovTitle">
+    <div class="dialWrap">
+      <svg width="120" height="120" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#0b0f0b" stroke="#3a4a3a" stroke-width="7"/><circle cx="50" cy="50" r="34" fill="#000"/><path d="M26 26h48l-15 24 15 24H26l15-24z" fill="#7ee23a"/><circle cx="50" cy="50" r="46" fill="none" stroke="#7ee23a" stroke-width="1.5" opacity=".5"/></svg>
+    </div>
+    <h1 class="bigTitle">BEN <span>10</span></h1>
+    <div class="subtitle">OMNITRIX PROTOCOL</div>
+    <div class="fanline">A FAN-MADE ACTION TRIBUTE • STORY MODE • 4 ALIENS • 1 HERO</div>
+    <button class="btn primary" id="btnStart">START STORY</button>
+    <button class="btn" id="btnHow">HOW TO PLAY</button>
+  </div>
+
+  <!-- HOW TO PLAY -->
+  <div class="ov hidden" id="ovHow">
+    <div class="panel" style="cursor:default">
+      <h2 class="ovh">HOW TO PLAY</h2>
+      <div class="keys">
+        <b>A / D</b> or <b>◄ ►</b> move &nbsp; <b>SPACE</b> jump &nbsp; <b>S</b> drop through platforms<br>
+        <b>J</b> attack &nbsp; <b>1–4</b> transform &nbsp; <b>Q</b> revert to Ben &nbsp; <b>P</b> pause<br>
+        On touch screens, use the on-screen pads and tap the Omnitrix dial.
+      </div>
+      <div class="howGrid">
+        <div><b style="color:#ff8a2a">HEATBLAST</b>Ranged fireballs. Great for drones — useless against armor.</div>
+        <div><b style="color:#3fc0ff">XLR8</b>Blinding speed. Dash-strikes pierce enemy fire.</div>
+        <div><b style="color:#ff5f4a">FOUR ARMS</b>Slow, heavy, smashes armor and blasts bolts out of the air.</div>
+        <div><b style="color:#7ef2a2">DIAMONDHEAD</b>Crystal shard fan shreds armor and intercepts bolts. Takes half damage.</div>
+      </div>
+      <div class="keys" style="text-align:center">The Omnitrix drains energy while transformed. Revert to <b>Ben</b> (Q) to recharge fast — at zero power the watch locks up!</div>
+      <button class="btn" id="howBack">BACK</button>
+    </div>
+  </div>
+
+  <!-- STORY -->
+  <div class="ov hidden" id="ovStory">
+    <div class="panel">
+      <div id="storyName"></div>
+      <div id="storyText"></div>
+      <div id="storyNext">▸ CLICK / ENTER</div>
+    </div>
+  </div>
+
+  <!-- GAME OVER -->
+  <div class="ov hidden" id="ovOver">
+    <h2 class="ovh" style="color:#ff5340">OMNITRIX TIMED OUT</h2>
+    <div class="stats">SCORE <span id="overScore">0</span></div>
+    <div><button class="btn primary" id="btnRetry">RETRY CHAPTER</button><button class="btn" id="btnQuit">TITLE</button></div>
+  </div>
+
+  <!-- VICTORY -->
+  <div class="ov hidden" id="ovWin">
+    <h2 class="ovh">EARTH IS SAFE</h2>
+    <div class="stats">SCORE <span id="winScore">0</span> &nbsp;•&nbsp; BEST COMBO <span id="winCombo">×1</span></div>
+    <button class="btn primary" id="btnHero">HERO MODE — ENDLESS</button>
+    <div><button class="btn" id="btnReplay">REPLAY STORY</button><button class="btn" id="btnWinTitle">TITLE</button></div>
+  </div>
+
+  <!-- PAUSE -->
+  <div class="ov hidden" id="ovPause">
+    <h2 class="ovh">PAUSED</h2>
+    <button class="btn primary" id="btnResume">RESUME</button>
+    <button class="btn" id="btnPauseQuit">QUIT TO TITLE</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
