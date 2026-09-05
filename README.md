@@ -223,17 +223,17 @@ The game is deployed using **GitHub Pages**.
 
 ## 📸 Gameplay
 
-> Add gameplay screenshots or a short gameplay GIF here to make the repository more visually appealing.
 
 <img width="1732" height="962" alt="Screenshot 2026-09-05 223623" src="https://github.com/user-attachments/assets/046fd32f-5d50-4aee-8c30-a2de80b92ae1" />
 
-Example:
 
-```markdown
-![Gameplay Screenshot](screenshots/gameplay.png)
-```
+<img width="1735" height="976" alt="Screenshot 2026-09-05 223715" src="https://github.com/user-attachments/assets/c3435348-e1b3-4bb9-b520-f3d567bef45a" />
 
----
+
+
+<img width="1668" height="967" alt="Screenshot 2026-09-05 223640" src="https://github.com/user-attachments/assets/9b2ba2dd-c6df-46dc-9bf8-6c3a0df90ffd" />
+
+
 
 ## 📈 Future Improvements
 
