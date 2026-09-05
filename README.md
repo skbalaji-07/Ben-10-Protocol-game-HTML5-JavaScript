@@ -4,9 +4,7 @@ A fan-made **Ben 10 browser action game** built using HTML5 Canvas, CSS, and Jav
 
 ## 🎮 Play the Game
 
-👉 **[PLAY NOW](https://YOUR-USERNAME.github.io/omnitrix-protocol/)**
-
-> Replace `@skbalaji-07` with your GitHub username after enabling GitHub Pages.
+👉 **[PLAY NOW]([https://YOUR-USERNAME.github.io/omnitrix-protocol/](https://skbalaji-07.github.io/Ben-10-Protocol-game-HTML5-JavaScript/))**
 
 ## ⚡ Features
 
